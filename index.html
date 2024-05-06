@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>sse</title>
+  </head>
+  <body>
+    <button id="GET">GET</button>
+    <button id="POST">POST</button>
+    <script>
+      const endpoint = "http://10.67.1.70:8080";
+      GET.addEventListener("click", () => {
+        fetch(`${endpoint}/sse-get`, {
+          method: "GET",
+        })
+          .then((response) => response.json())
+          .then((data) => console.log(data))
+          .catch((error) => console.error(error));
+      });
+      POST.addEventListener("click", () => {
+        fetch(`${endpoint}/sse-post`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: "",
+        })
+          .then((response) => response.json())
+          .then((data) => console.log(data))
+          .catch((error) => console.error(error));
+      });
+    </script>
+  </body>
+</html>
